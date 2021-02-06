@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br " xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+	<ul th:replace="layout :: nav"></ul>
+	<div class="container">
+		<h2>Lista de clientes</h2>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Detalhes</th>
+					<th>Editar</th>
+					<th>Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente : ${clientes}">
+					<td th:text="${cliente.id}"></td>
+					<td th:text="${cliente.nome}"></td>
+					<td th:text="${cliente.email}"></td>
+					<td><a th:href="@{/detalhe/{clienteId}(clienteId = ${cliente.id})}"><i class="fas fa-info text-info"></i></a></td>
+					<td><a th:href="@{/edit/{clienteId}(clienteId = ${cliente.id})}"><i class="fas fa-user-edit text-success"></i></a></td>
+					<td><a th:href="@{/delete/{clienteId}(clienteId = ${cliente.id})}"><i class="fas fa-user-times text-danger"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

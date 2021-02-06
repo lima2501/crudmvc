@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+	<ul th:replace="layout :: nav"></ul>
+	<div class="container">
+		<h2>Detalhe do cliente</h2>
+		<div class="card mt-4" style="width: 18rem;">
+		  <ul class="list-group list-group-flush">
+		    <li class="list-group-item"><b>Nome: </b><span th:text="${cliente.nome}"></span></li>
+		    <li class="list-group-item"><b>Email: </b><span th:text="${cliente.email}"></span></li>
+		    <li class="list-group-item"><b>Telefone: </b><span th:text="${cliente.telefone}"></span></li>
+		    <li class="list-group-item"><b>Endereço: </b><span th:text="${cliente.endereco}"></span></li>
+		  </ul>
+		</div>
+		<div class="mt-4">
+			<a th:href="@{/edit/{clienteId}(clienteId = ${cliente.id})}"><button class="btn btn-success">Editar</button></a>
+			<a th:href="@{/delete/{clienteId}(clienteId = ${cliente.id})}"><button class="btn btn-danger">Excluir</button></a>
+		</div>
+	</div>
+</body>
+</html>
